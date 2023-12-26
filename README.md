@@ -1,5 +1,5 @@
 # ResNet50-Based Face Recognition System
-The repo does not contain the model, as it is too heavy.
+The repository doesn't include the model due to its large size. It is available in the project's OneDrive repository.
 ## Overview
 
 This system use ResNet50, a deep learning model, for facial recognition tasks. It is specifically designed to generate embeddings of facial images, which can be used for various applications like identity verification. The system is trained using the Labeled Faces in the Wild (LFW) dataset, a large-scale database of face images. A unique feature of this system is its web interface, allowing users to interact with the model via their camera.

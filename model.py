@@ -8,7 +8,7 @@ from tensorflow.keras.layers import Input, GlobalAveragePooling2D, Dense, concat
 
 # Load and preprocess image
 def load_image(path):
-    img = image.load_img(path, target_size=(64, 64))  # Updated size
+    img = image.load_img(path, target_size=(64, 64))
     img = image.img_to_array(img)
     img = np.expand_dims(img, axis=0)
     img = preprocess_input(img)
@@ -16,9 +16,9 @@ def load_image(path):
 
 # Generate triplets
 def generate_triplets(directory, batch_size=32):
-    anchor_images = np.zeros((batch_size, 64, 64, 3))  # Updated size
-    positive_images = np.zeros((batch_size, 64, 64, 3))  # Updated size
-    negative_images = np.zeros((batch_size, 64, 64, 3))  # Updated size
+    anchor_images = np.zeros((batch_size, 64, 64, 3))
+    positive_images = np.zeros((batch_size, 64, 64, 3))
+    negative_images = np.zeros((batch_size, 64, 64, 3))
     
     persons = os.listdir(directory)
     
@@ -41,12 +41,12 @@ def generate_triplets(directory, batch_size=32):
 
         yield [anchor_images, positive_images, negative_images], np.zeros((batch_size, 3*128))
 
-# Load ResNet-50 as base model
-base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(64, 64, 3))  # Updated input shape
+# Load model
+base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(64, 64, 3))
 
 # Embedding model
 def embedding_model():
-    input = Input(shape=(64, 64, 3))  # Updated size
+    input = Input(shape=(64, 64, 3))  
     x = base_model(input)
     x = GlobalAveragePooling2D()(x)
     x = Dense(128, activation='relu')(x)
@@ -65,9 +65,9 @@ def triplet_loss(y_true, y_pred, alpha = 0.4):
     return loss
 
 # Triplet network
-anchor_input = Input(shape=(64, 64, 3), name='anchor_input')  # Updated size
-positive_input = Input(shape=(64, 64, 3), name='positive_input')  # Updated size
-negative_input = Input(shape=(64, 64, 3), name='negative_input')  # Updated size
+anchor_input = Input(shape=(64, 64, 3), name='anchor_input')
+positive_input = Input(shape=(64, 64, 3), name='positive_input')
+negative_input = Input(shape=(64, 64, 3), name='negative_input')
 
 shared_embedding = embedding_model()
 
@@ -84,13 +84,13 @@ print("Model is compiled and ready to be trained.")
 
 # Train the model
 batch_size = 32
-steps_per_epoch = 100  # Adjust based on dataset size
+steps_per_epoch = 100  
 
 print("Starting training...")
 history = model.fit(
     generate_triplets('lfw_filtered', batch_size=batch_size),
     steps_per_epoch=steps_per_epoch,
-    epochs=10  # Adjust as needed
+    epochs=10  
 )
 
 print("Training completed.")

@@ -40,7 +40,7 @@ preprocessed_img = preprocess_image(image_path)
 embeddings = model.predict([preprocessed_img, preprocessed_img, preprocessed_img])
 
 # Extract the embeddings (the first part of the output)
-embedding_output = embeddings # Assuming your embedding size is 128
+embedding_output = embeddings
 
 print("Embedding for the image:")
 print(embedding_output)
@@ -53,8 +53,8 @@ preprocessed_img = preprocess_image(image_path)
 
 embeddings = model.predict([preprocessed_img, preprocessed_img, preprocessed_img])
 
-# Extract the embeddings (the first part of the output)
-embedding_output_2 = embeddings # Assuming your embedding size is 128
+# Extract the embeddings
+embedding_output_2 = embeddings
 
 print("Embedding for the image:")
 print(embedding_output)

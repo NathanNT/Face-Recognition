@@ -15,4 +15,4 @@ def detect_and_save_face(image_path, output_path):
     for (x, y, w, h) in faces:
         face = image[y:y+h, x:x+w]
         cv2.imwrite(output_path, face)
-        break  # Remove this line if you want to save all detected faces
+        break 

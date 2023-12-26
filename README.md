@@ -91,4 +91,9 @@ Euclidean Distance: 0.36959004
 
 ## Usage
 
+<<<<<<< HEAD
+1. Download the `requirements.txt` packages and launch `app.py`.
+2. Connect to the Web UI and start taking photos to fill the CSV database. Each embedding of new photos will be compared with photos in the database to find the best match.
+=======
 Download the requirement.txt packages and launch app.py
+>>>>>>> 4a80e7e682a7efff8d1604b3d9994eb077f571c3

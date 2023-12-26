@@ -1,5 +1,5 @@
 import os
-from face_detect import *
+from opencv_face_detection import *
 from PIL import Image
 
 def resize_and_save_image(src, dst, size=(64, 64)):
@@ -49,7 +49,7 @@ for key in keys:
 
     # Check if source folder exists
     if os.path.exists(source_folder):
-        # Create the destination folder if it doesn't exist
+        # Create the destination folder
         if not os.path.exists(destination_folder):
             os.makedirs(destination_folder)
             print(f"Created folder: {destination_folder}")
@@ -59,7 +59,7 @@ for key in keys:
 
     # Check if source folder exists
     if os.path.exists(source_folder):
-        # Create the destination folder if it doesn't exist
+        # Create the destination folder
         if not os.path.exists(destination_folder):
             os.makedirs(destination_folder)
             print(f"Created folder: {destination_folder}")
